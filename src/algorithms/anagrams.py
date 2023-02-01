@@ -1,7 +1,7 @@
 
 ''' The problem
         Given two strings, word1 and word2 respectively, verify that they are anagrams.
-        An anagram is when two words have the same characters and frequency. 
+        An anagram is when two words have the same characters and frequency.
     Example
         input:
             word1 = 'nameless'
@@ -15,27 +15,28 @@
 '''
 
 from collections import Counter
-from helper import benchmark, logger
+from typing import Optional
 
 
 class IsAnagram:
-
+    ''' To solve this algorithm we will abide by a few ground rules:
+            1. We won't accept any parameter that is not a string literal.
+            2. If the lengths of the words differ they are not an anagram.
+    '''
     def __init__(self, word1: str, word2: str) -> None:
-        assert type(word1) == str, 'Anagrams only work for strings!'
-        assert type(word2) == str, 'Anagrams only work for strings!'
+        assert isinstance(word1, str), 'Anagrams only work for strings!'
+        assert isinstance(word2, str), 'Anagrams only work for strings!'
         self.word1 = word1
         self. word2 = word2
 
-
-    def base_case(self) -> True:
+    def base_case(self) -> bool:
         # If the words differ from length then we don't need to do compute anything else.
         if len(self.word1) != len(self.word2):
             return True
+        return False
 
-    @logger
-    @benchmark
     def compute_by_hash(self) -> bool:
-        if self.base_case() is None:
+        if self.base_case() is False:
             freq1 = {}
             freq2 = {}
 
@@ -49,15 +50,8 @@ class IsAnagram:
                 return True
         return False
 
-    @logger
-    @benchmark
-    def compute_by_counter(self) -> bool:
-        if self.base_case() is None:
-            return Counter(self.word1) == Counter(self.word2)
-        
-    @logger
-    @benchmark
-    def compute_by_sorting(self) -> bool:
-        if self.base_case() is None:
-            return sorted(self.word1) == sorted(self.word2)
-        
+    def compute_by_counter(self) -> Optional[bool]:
+        return Counter(self.word1) == Counter(self.word2) if self.base_case() is False else None
+
+    def compute_by_sorting(self) -> Optional[bool]:
+        return sorted(self.word1) == sorted(self.word2) if self.base_case() is False else None

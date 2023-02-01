@@ -1,0 +1,20 @@
+Hello friend.
+
+I started writing these tests with the unittest built in Python module.
+
+I discovered I had to resort to hacks (I map the local modules by using the config file) and other nasty stuff in order to structure my project as I wanted, so I stopped using it and changed to pytest which I find much robust anyway.
+
+The files were left just for reference. Keep in mind you have to remove the old_ prefix in order to make them work.
+
+Here are the shell commands in case you want to try them out.
+
+# Discover and run all tests in the test directory 
+python -m unittest discover ${pwd}/tests_old
+# Run coverage for all modules
+coverage run --source=./tests -m unittest discover -s ${pwd}/tests
+# Get the coverage report from the same directory - no need to cd.
+coverage report
+# Generate the HTML report (Open index.html from htmlcov/ in Browser) -- This one does is valid for using pytest aswell.
+coverage html
+
+-- Heinz

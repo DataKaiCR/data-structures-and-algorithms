@@ -3,6 +3,7 @@ from time import perf_counter
 from typing import Callable, Any
 from functools import wraps
 
+
 def benchmark(original_func: Callable[..., Any]) -> Callable[..., Any]:
     @wraps(original_func)
     def wrapper(*args: Any, **kwargs: Any) -> Any:

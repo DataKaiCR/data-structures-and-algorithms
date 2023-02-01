@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+src/algorithms/__init__.py
+src/algorithms/anagrams.py
+src/algorithms/first_and_last.py
+src/algorithms/kth_largest.py
+src/algorithms/py.typed
+src/py_algorithms.egg-info/PKG-INFO
+src/py_algorithms.egg-info/SOURCES.txt
+src/py_algorithms.egg-info/dependency_links.txt
+src/py_algorithms.egg-info/not-zip-safe
+src/py_algorithms.egg-info/requires.txt
+src/py_algorithms.egg-info/top_level.txt

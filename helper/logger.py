@@ -1,7 +1,7 @@
 import logging
-from time import perf_counter
 from typing import Callable, Any
 from functools import wraps
+
 
 def logger(original_func: Callable[..., Any]) -> Callable[..., Any]:
     @wraps(original_func)

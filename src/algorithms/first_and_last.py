@@ -12,24 +12,25 @@
             - the last 1 in the array is in position 2: arr[2] = 1
 '''
 
-from helper import benchmark, logger
+from typing import List
+
 
 class FirstAndLast:
 
-    def __init__(self, arr:list, target:int) -> None:
-        assert type(arr) == list, 'You must supply an array'
-        assert type(target) == int, 'Your target must be a positive integer'
+    def __init__(self, arr: List[int], target: int) -> None:
+        assert isinstance(arr, list), 'You must supply an array'
+        assert isinstance(target, int), 'Your target must be a positive integer'
         self.arr = sorted(arr)
         self.target = target
 
-    def compute_by_iteration(self) -> list:
+    def compute_by_iteration(self) -> List[int]:
         # Go until each item in the array until we find a match. If no match we default to [-1,-1]
         for i in range(len(self.arr)):
             # Match found
             if self.arr[i] == self.target:
                 start = i
-                # If the next number in the array is not the limit and while incrementing the array + 1 continues to be the same as the target, run the same loop.
+                # Keep incrementing the array index + 1 until the target is different from value
                 while i + 1 < len(self.arr) and self.arr[i + 1] == self.target:
                     i += 1
                 return [start, i]
-        return [-1,-1]
+        return [-1, -1]

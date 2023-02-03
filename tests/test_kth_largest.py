@@ -7,16 +7,14 @@ def test_class_instance() -> None:
     assert isinstance(obj, KthLargest)
 
 
-def test_class_instance_fail_by_empty_array() -> None:
+@pytest.mark.parametrize("input1, input2, expected", [
+    ([], 0, 'Your array must contain at least 1 number'),
+    ([1], -1, 'Your k value must be a positive integer')
+])
+def test_class_instance_fail_by_empty_array_or_k_value(input1, input2, expected) -> None:
     with pytest.raises(AssertionError) as context:
-        KthLargest([], 0)
-    assert ('Your array must contain at least 1 number' in str(context.value))
-
-
-def test_class_instance_fail_by_k() -> None:
-    with pytest.raises(AssertionError) as context:
-        KthLargest([1], -1)
-    assert ('Your k value must be a positive integer' in str(context.value))
+        KthLargest(arr=input1, k=input2)
+    assert (expected in str(context.value))
 
 
 def test_base_case() -> None:
@@ -31,6 +29,16 @@ def test_compute_kth() -> None:
     assert (obj.compute_kth() == 5)
 
 
+def test_compute_kth_fail() -> None:
+    obj = KthLargest(['1','2'], 3)
+    assert (obj.compute_kth() is None)
+
+
 def test_compute_kth_with_heap() -> None:
     obj = KthLargest([0, 2, 3, 7, 5, 6, 7], 4)
     assert (obj.compute_kth_with_heap() == 5)
+
+
+def test_compute_kth_with_heap_fail() -> None:
+    obj = KthLargest(['1','2'], 3)
+    assert (obj.compute_kth_with_heap() is None)

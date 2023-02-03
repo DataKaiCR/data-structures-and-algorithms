@@ -15,7 +15,7 @@
 '''
 
 import heapq
-from typing import Any, List
+from typing import Optional, List
 
 
 class KthLargest:
@@ -37,21 +37,23 @@ class KthLargest:
         #     self.arr = arr
         #     self.k = k
 
-    def base_case(self) -> Any:
-        # We want a method to handle all bases cases to avoid code duplication.
-        if len(self.arr) == 1 or self.k > len(self.arr):
-            return self.arr[0]
+    def base_case(self) -> Optional[int]:
+        # We want a method to handle all bases cases to avoid unnecesary computation.
+        return self.arr[0] if len(self.arr) == 1 or self.k > len(self.arr) else None
+            
 
-    def compute_kth(self) -> Any:
+    def compute_kth(self) -> Optional[int]:
         # Easy method by sorting the array and then returning the k index by using the end of the array as the starting point.
         # We avoid using the reverse() method as it's additional computation.
-        if not self.base_case():
+        if self.base_case() is None:
             return sorted(self.arr)[-self.k]
+        return None
 
-    def compute_kth_with_heap(self) -> Any:
+    def compute_kth_with_heap(self) -> Optional[int]:
         if not self.base_case():
             self.arr = [-x for x in self.arr]
             heapq.heapify(self.arr)
             for i in range(self.k-1):
                 heapq.heappop(self.arr)
             return -heapq.heappop(self.arr)
+        return None

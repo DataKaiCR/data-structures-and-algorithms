@@ -23,6 +23,7 @@ class IsAnagram:
             1. We won't accept any parameter that is not a string literal.
             2. If the lengths of the words differ they are not an anagram.
     '''
+
     def __init__(self, word1: str, word2: str) -> None:
         assert isinstance(word1, str), 'Anagrams only work for strings!'
         assert isinstance(word2, str), 'Anagrams only work for strings!'

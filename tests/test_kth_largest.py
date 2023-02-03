@@ -30,7 +30,7 @@ def test_compute_kth() -> None:
 
 
 def test_compute_kth_fail() -> None:
-    obj = KthLargest(['1','2'], 3)
+    obj = KthLargest(['1', '2'], 3)
     assert (obj.compute_kth() is None)
 
 
@@ -40,5 +40,5 @@ def test_compute_kth_with_heap() -> None:
 
 
 def test_compute_kth_with_heap_fail() -> None:
-    obj = KthLargest(['1','2'], 3)
+    obj = KthLargest(['1', '2'], 3)
     assert (obj.compute_kth_with_heap() is None)

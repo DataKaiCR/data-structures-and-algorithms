@@ -40,7 +40,6 @@ class KthLargest:
     def base_case(self) -> Optional[int]:
         # We want a method to handle all bases cases to avoid unnecesary computation.
         return self.arr[0] if len(self.arr) == 1 or self.k > len(self.arr) else None
-            
 
     def compute_kth(self) -> Optional[int]:
         # Easy method by sorting the array and then returning the k index by using the end of the array as the starting point.

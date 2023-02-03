@@ -23,10 +23,8 @@ class FirstAndLast:
         self.arr = sorted(arr)
         self.target = target
 
-
     def base_case(self) -> Optional[List[int]]:
-        return [-1,-1] if len(self.arr) == 0 or self.arr[0] > self.target or self.arr[-1] < self.target else None
-
+        return [-1, -1] if len(self.arr) == 0 or self.arr[0] > self.target or self.arr[-1] < self.target else None
 
     def compute_by_iteration(self) -> List[int]:
         if self.base_case() is None:
@@ -39,8 +37,7 @@ class FirstAndLast:
                     while i + 1 < len(self.arr) and self.arr[i + 1] == self.target:
                         i += 1
                     return [start, i]
-        return [-1,-1]
-
+        return [-1, -1]
 
     def _find_start(self) -> int:
         if self.arr[0] == self.target:
@@ -48,7 +45,7 @@ class FirstAndLast:
         left, right = 0, len(self.arr) - 1
         while left <= right:
             mid = (left + right)//2
-            if self.arr[mid] == self.target and self.arr[mid- 1]  < self.target:
+            if self.arr[mid] == self.target and self.arr[mid - 1] < self.target:
                 return mid
             elif self.arr[mid] < self.target:
                 left = mid + 1
@@ -58,11 +55,11 @@ class FirstAndLast:
 
     def _find_end(self) -> int:
         if self.arr[-1] == self.target:
-            return len(self.arr) -1
+            return len(self.arr) - 1
         left, right = 0, len(self.arr) - 1
         while left <= right:
             mid = (left + right)//2
-            if self.arr[mid] == self.target and self.arr[mid+ 1] > self.target:
+            if self.arr[mid] == self.target and self.arr[mid + 1] > self.target:
                 return mid
             elif self.arr[mid] > self.target:
                 right = mid - 1
@@ -73,4 +70,4 @@ class FirstAndLast:
     def compute_by_binary_search(self) -> List[int]:
         if self.base_case() is None:
             return [self._find_start(), self._find_end()]
-        return [-1,-1]
+        return [-1, -1]

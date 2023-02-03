@@ -21,12 +21,13 @@
         That is why I think this is such a good example to learn about dynamic programming and its benefits.
 
         For this problem I could have just made a standard class and added each technique as it's own method,
-        but I felt like doing it a bit differently and using other tools and options we have available 
+        but I felt like doing it a bit differently and using other tools and options we have available
         when creating and instantiating objects.
 '''
 
 from abc import ABC, abstractmethod
 from typing import Optional
+
 
 class Fibonacci(ABC):
     ''' When thinking about a Fibonacci object we can imagine a hash that when calling its index[n]
@@ -43,7 +44,7 @@ class Fibonacci(ABC):
     '''
     @abstractmethod
     def __init__(self) -> None:
-        self.memo = {0: 0, 1: 1, 2:1}
+        self.memo = {0: 0, 1: 1, 2: 1}
         pass
 
     @abstractmethod
@@ -60,9 +61,10 @@ class SlowFibonacci(Fibonacci):
         the time will increment drastically for each larger number we provided as input.
         This is called time complexity. (0)
 
-        So basically if we were to find out the 50th Fib number, our time complexity would be 
+        So basically if we were to find out the 50th Fib number, our time complexity would be
         O(2**n) which is 2 ** 50 calculations! That is over 4 quadrillion steps.
     '''
+
     def __init__(self) -> None:
         super().__init__()
 
@@ -80,11 +82,12 @@ class MemoFibonacci(Fibonacci):
 
         Welcome to dynamic programming.
         By storing each calculation in a dictionary, once we run into a similar situation, we won't need
-        to compute it again. We save ourselves this trouble because we already did it before! 
-        This is called memoization. 
+        to compute it again. We save ourselves this trouble because we already did it before!
+        This is called memoization.
 
         Now, our time complexity has been reduced from 0(2**n) to 0(n)
     '''
+
     def __init__(self) -> None:
         super().__init__()
 
@@ -111,12 +114,9 @@ class IterativeFibonacci(Fibonacci):
 
     def __call__(self, n):
         super().__call__(n)
-        if n == 0: 
+        if n == 0:
             return self.memo[0]
         previous_fib, current_fib = self.memo[0], self.memo[1]
         for _ in range(2, n + 1):
             previous_fib, current_fib = current_fib, previous_fib + current_fib
         return current_fib
-
-fib_of = IterativeFibonacci()
-print(fib_of(10))

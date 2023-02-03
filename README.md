@@ -14,3 +14,5 @@ Peace!
 
 -- Heinz
 
+![Tests](https://github.com/DataKaiCR/data-structures-and-algorithms/actions/workflows/tests.yml/badge.svg)
+

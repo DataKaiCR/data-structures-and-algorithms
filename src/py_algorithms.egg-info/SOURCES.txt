@@ -4,6 +4,7 @@ setup.cfg
 setup.py
 src/algorithms/__init__.py
 src/algorithms/anagrams.py
+src/algorithms/fibonacci.py
 src/algorithms/first_and_last.py
 src/algorithms/kth_largest.py
 src/algorithms/py.typed

@@ -1,6 +1,7 @@
 import pytest
 from algorithms import SlowFibonacci, MemoFibonacci, IterativeFibonacci
 
+
 @pytest.mark.parametrize("input, expected", [
     (0, 0),
     (1, 1),
@@ -13,6 +14,7 @@ from algorithms import SlowFibonacci, MemoFibonacci, IterativeFibonacci
 def test_normal_recurssion(input, expected):
     fib_of = SlowFibonacci()
     assert fib_of(input) == expected
+
 
 @pytest.mark.parametrize("input, expected", [
     (0, 0),
@@ -27,6 +29,7 @@ def test_normal_recurssion(input, expected):
 def test_memoized_recurssion(input, expected):
     fib_of = MemoFibonacci()
     assert fib_of(input) == expected
+
 
 @pytest.mark.parametrize("input, expected", [
     (0, 0),
